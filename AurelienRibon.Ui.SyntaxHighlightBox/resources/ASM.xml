@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Syntax name="ASM">
+	<HighlightWordsRule name="Instructions">
+		<Words>
+      MOV ADD SUB MUL DIV LOD STO JMP
+    </Words>
+		<IgnoreCase>true</IgnoreCase>
+		<Foreground>#2A0085</Foreground>
+		<FontWeight>Bold</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightWordsRule>
+  <HighlightWordsRule name="Memory">
+    <Words>
+      A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+    </Words>
+    <IgnoreCase>true</IgnoreCase>
+    <Foreground>#006335</Foreground>
+    <FontWeight>Normal</FontWeight>
+    <FontStyle>Normal</FontStyle>
+  </HighlightWordsRule>
+  <HighlightLineRule name="Comments">
+		<LineStart>//</LineStart>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#009933</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</HighlightLineRule>
+  <AdvancedHighlightRule name="Numbers">
+		<Expression>\b([0-9]+)\b</Expression>
+		<IgnoreCase>false</IgnoreCase>
+		<Foreground>#F68A1B</Foreground>
+		<FontWeight>Normal</FontWeight>
+		<FontStyle>Normal</FontStyle>
+	</AdvancedHighlightRule>
+  <AdvancedHighlightRule name="Hex">
+    <Expression>0[xX][0-9a-fA-F]+</Expression>
+    <IgnoreCase>false</IgnoreCase>
+    <Foreground>#006335</Foreground>
+    <FontWeight>Normal</FontWeight>
+    <FontStyle>Normal</FontStyle>
+  </AdvancedHighlightRule>
+</Syntax>
