@@ -12,7 +12,7 @@ using MahApps.Metro.Controls;
 namespace VNS {
     public partial class MainWindow : MetroWindow {
         private readonly MemoryContainer _memoryContainer = new MemoryContainer();
-        private static readonly Regex NumberRegex = new Regex("[^0-9]+");
+        private static readonly Regex NumberRegex = new Regex("[^0-9-]+");
         private static readonly Color BlueColor = Color.FromRgb(135, 206, 255);
         private string[] _codeLines;
         public WindowBindings WindowBindings { get; set; }
@@ -170,6 +170,59 @@ namespace VNS {
                         await Task.Delay((int)DelaySizer.Value);
                         WindowBindings.AccumulatorBrush = null;
                         break;
+                    case "JMP":
+                        WindowBindings.AluRegister1 = "";
+                        WindowBindings.AluRegister2 = "";
+                        WindowBindings.AluRegister1Brush = new SolidColorBrush(BlueColor);
+                        WindowBindings.AluRegister2Brush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluRegister1Brush = null;
+                        WindowBindings.AluRegister2Brush = null;
+                        WindowBindings.AluMethod = "↷";
+                        WindowBindings.AluMethodBrush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluMethodBrush = null;
+                        WindowBindings.CurrentLine = int.Parse(args[0]);
+                        break;
+                    case "BREQ":
+                        WindowBindings.AluRegister1 = "";
+                        WindowBindings.AluRegister2 = "";
+                        WindowBindings.AluRegister1Brush = new SolidColorBrush(BlueColor);
+                        WindowBindings.AluRegister2Brush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluRegister1Brush = null;
+                        WindowBindings.AluRegister2Brush = null;
+                        WindowBindings.AluMethod = "=↷";
+                        WindowBindings.AluMethodBrush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluMethodBrush = null;
+                        if(WindowBindings.Accumulator > 0) WindowBindings.CurrentLine = int.Parse(args[0]);
+                        break;
+                    case "CP":
+                        WindowBindings.AluRegister1 = WindowBindings.Accumulator.ToString();
+                        WindowBindings.AluRegister1Brush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluRegister1Brush = null;
+                        WindowBindings.AluRegister2 = _memoryContainer.GetValue(args[0]).ToString();
+                        WindowBindings.AluRegister2Brush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluRegister2Brush = null;
+                        WindowBindings.AluMethod = "==";
+                        WindowBindings.AluMethodBrush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluMethodBrush = null;
+                        WindowBindings.Accumulator = WindowBindings.Accumulator == _memoryContainer.GetValue(args[0]) ? 1 : 0;
+                        WindowBindings.AccumulatorBrush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AccumulatorBrush = null;
+                        break;
+                    case "HALT":
+                        WindowBindings.AluMethod = "❌";
+                        WindowBindings.AluMethodBrush = new SolidColorBrush(BlueColor);
+                        await Task.Delay((int)DelaySizer.Value);
+                        WindowBindings.AluMethodBrush = null;
+                        WindowBindings.IsRunning = false;
+                        break;
                     default:
                         break;
                 }
@@ -217,7 +270,7 @@ namespace VNS {
             }
             if (WindowBindings.CurrentLine >= _codeLines.Length) WindowBindings.CurrentLine = 1;
             WindowBindings.LinesBrush = new SolidColorBrush(Colors.LawnGreen);
-            foreach (var t in _codeLines) {
+            while (WindowBindings.CurrentLine < _codeLines.Length + 1) {
                 if (!WindowBindings.IsRunning) {
                     WindowBindings.IsRunning = false;
                     WindowBindings.LinesBrush = new SolidColorBrush(Colors.Red);
@@ -231,6 +284,7 @@ namespace VNS {
                     WindowBindings.AluRegister1 = "";
                     WindowBindings.AluRegister2 = "";
                     WindowBindings.AluMethod = "";
+                    WindowBindings.IsRunning = false;
                     return;
                 }
                 await Task.Delay((int)DelaySizer.Value);

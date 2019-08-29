@@ -3,7 +3,7 @@
 <Syntax name="ASM">
 	<HighlightWordsRule name="Instructions">
 		<Words>
-      MOV ADD SUB MUL DIV LOD STO JMP
+      MOV ADD SUB MUL DIV LOD STO JMP BREQ CP HALt
     </Words>
 		<IgnoreCase>true</IgnoreCase>
 		<Foreground>#2A0085</Foreground>
