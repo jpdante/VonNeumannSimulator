@@ -103,7 +103,7 @@ namespace AurelienRibon.Ui.SyntaxHighlightBox {
 
 		private void UpdateTotalLineCount() {
 			totalLineCount = TextUtilities.GetLineCount(Text);
-		}
+        }
 
 		private void UpdateBlocks() {
 			if (blocks.Count == 0)
@@ -262,7 +262,7 @@ namespace AurelienRibon.Ui.SyntaxHighlightBox {
 		public int GetIndexOfLastVisibleLine() {
 			double height = VerticalOffset + ViewportHeight;
 			int guessedLine = (int)(height / lineHeight);
-			return guessedLine > totalLineCount - 1 ? totalLineCount - 1 : guessedLine;
+            return guessedLine > totalLineCount - 1 ? totalLineCount - 1 : guessedLine;
 		}
 
 		/// <summary>

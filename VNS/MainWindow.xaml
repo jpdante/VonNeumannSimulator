@@ -28,12 +28,12 @@
         </ListView>
         <SyntaxHighlightBox:SyntaxHighlightBox x:Name="CodeBox" Margin="10,25,0,51" HorizontalAlignment="Left" Width="228" CharacterCasing="Upper" FontFamily="Arial" FontSize="16" TextChanged="CodeBox_TextChanged"/>
         <Grid Height="46" VerticalAlignment="Bottom" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
-            <Button x:Name="StartBtn" Content="Iniciar" Margin="10,10,0,10" Height="Auto" Click="StartBtn_Click" HorizontalAlignment="Left" Width="100"/>
-            <Button x:Name="NextBtn" Content="Avancar" Margin="115,10,0,10" Height="Auto" HorizontalAlignment="Left" Width="100" Click="NextBtn_Click"/>
-            <Button x:Name="StopBtn" Content="Parar" Margin="220,10,0,10" Height="Auto" HorizontalAlignment="Left" Width="100" Click="StopBtn_Click" IsEnabled="{Binding WindowBindings.IsRunning, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+            <Button x:Name="StartBtn" Content="Start" Margin="10,10,0,10" Height="Auto" Click="StartBtn_Click" HorizontalAlignment="Left" Width="100"/>
+            <Button x:Name="NextBtn" Content="Step" Margin="115,10,0,10" Height="Auto" HorizontalAlignment="Left" Width="100" Click="NextBtn_Click"/>
+            <Button x:Name="StopBtn" Content="Stop" Margin="220,10,0,10" Height="Auto" HorizontalAlignment="Left" Width="100" Click="StopBtn_Click" IsEnabled="{Binding WindowBindings.IsRunning, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
             <Slider x:Name="DelaySizer" Margin="0,10,65,10" HorizontalAlignment="Right" Width="318" Maximum="5000" Minimum="1" Value="200" mah:SliderHelper.ChangeValueBy="LargeChange" TickFrequency="10" ValueChanged="DelaySizer_ValueChanged" SmallChange="1" LargeChange="10"/>
             <Label x:Name="MsLabel" Content="200 ms" Margin="0,10,10,10" HorizontalAlignment="Right" Width="55" Foreground="Black"/>
-            <Label Content="Intervalo:" Margin="0,10,388,10" HorizontalAlignment="Right" Width="59" Foreground="Black"/>
+            <Label Content="Delay:" Margin="0,10,388,10" HorizontalAlignment="Right" Width="59" Foreground="Black"/>
         </Grid>
         <Grid Margin="238,25,192,51">
             <Viewbox>

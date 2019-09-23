@@ -19,7 +19,7 @@ namespace VNS {
         private Brush _currentInstructionBrush;
         private Brush _decoderBrush;
         private Brush _incrementLineBrush;
-        private bool _isRunning;
+        private bool _isRunning = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

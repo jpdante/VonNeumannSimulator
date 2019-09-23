@@ -3,7 +3,7 @@
 <Syntax name="ASM">
 	<HighlightWordsRule name="Instructions">
 		<Words>
-      MOV ADD SUB MUL DIV LOD STO JMP BREQ CP HALt
+      ADD SUB MUL DIV LOD STO JMP JMZ HLT NOP
     </Words>
 		<IgnoreCase>true</IgnoreCase>
 		<Foreground>#2A0085</Foreground>
@@ -15,7 +15,7 @@
       A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
     </Words>
     <IgnoreCase>true</IgnoreCase>
-    <Foreground>#006335</Foreground>
+    <Foreground>#0D7B40</Foreground>
     <FontWeight>Normal</FontWeight>
     <FontStyle>Normal</FontStyle>
   </HighlightWordsRule>
@@ -26,17 +26,24 @@
 		<FontWeight>Normal</FontWeight>
 		<FontStyle>Normal</FontStyle>
 	</HighlightLineRule>
-  <AdvancedHighlightRule name="Numbers">
-		<Expression>\b([0-9]+)\b</Expression>
+  <AdvancedHighlightRule name="Line Numbers">
+		<Expression>([0-9]+)</Expression>
 		<IgnoreCase>false</IgnoreCase>
-		<Foreground>#F68A1B</Foreground>
+		<Foreground>#0D7B40</Foreground>
 		<FontWeight>Normal</FontWeight>
 		<FontStyle>Normal</FontStyle>
 	</AdvancedHighlightRule>
+  <AdvancedHighlightRule name="Numbers">
+    <Expression>#([0-9]+)</Expression>
+    <IgnoreCase>false</IgnoreCase>
+    <Foreground>#AC5A12</Foreground>
+    <FontWeight>Normal</FontWeight>
+    <FontStyle>Normal</FontStyle>
+  </AdvancedHighlightRule>
   <AdvancedHighlightRule name="Hex">
     <Expression>0[xX][0-9a-fA-F]+</Expression>
     <IgnoreCase>false</IgnoreCase>
-    <Foreground>#006335</Foreground>
+    <Foreground>#0D7B40</Foreground>
     <FontWeight>Normal</FontWeight>
     <FontStyle>Normal</FontStyle>
   </AdvancedHighlightRule>

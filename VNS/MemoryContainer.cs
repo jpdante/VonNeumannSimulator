@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace VNS {
+    [Serializable]
     public class MemoryContainer : INotifyPropertyChanged {
         public ObservableCollection<MemoryLocation> MemoryData { get; }
 
@@ -43,14 +45,7 @@ namespace VNS {
         }
 
 
-        public int GetValue(string id) {
-            foreach (var memory in MemoryData) {
-                if (memory.MemoryName.Equals(id, StringComparison.CurrentCultureIgnoreCase)) {
-                    return memory.MemoryValue;
-                }
-            }
-            return 0;
-        }
+        public int GetValue(string id) { return (from memory in MemoryData where memory.MemoryName.Equals(id, StringComparison.CurrentCultureIgnoreCase) select memory.MemoryValue).FirstOrDefault(); }
 
         public void SetValue(string id, int value) {
             foreach (var memory in MemoryData) {
@@ -58,6 +53,7 @@ namespace VNS {
                 memory.MemoryValue = value;
                 return;
             }
+            MemoryData.Add(new MemoryLocation(id, value));
         }
 
         private void OnMemoryAppenderPropertyChanged(object sender, PropertyChangedEventArgs e) {

@@ -60,9 +60,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\VHDL.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="resources\syntax.xsd" />
   </ItemGroup>
   <ItemGroup>

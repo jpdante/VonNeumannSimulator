@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace VNS {
+    [Serializable]
     public class MemoryLocation : INotifyPropertyChanged {
         private string _memoryName;
         private int _memoryValue;
