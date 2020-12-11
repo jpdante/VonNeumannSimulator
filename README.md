@@ -1,5 +1,4 @@
 # VonNeumannSimulator - VNS
-Von Neumann machine simulator.
 ![Simulation example.](https://github.com/jpdante/VonNeumannSimulator/blob/master/Wiki/SimulationExample.png)
 
 ## About
